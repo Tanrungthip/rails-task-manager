@@ -1,0 +1,11 @@
+<div class="container m-3">
+  <h1><%= @task.title %></h1>
+  <div class="alert alert-info" role="alert">
+    <p><%= @task.details %></p>
+  </div>
+
+  <%= link_to "Back to tasks", tasks_path %><br>
+  <%= link_to "Edit this task", edit_task_path %>
+
+  <p><%= link_to 'Delete', task_path(@task), data: {turbo_method: :delete, turbo_confirm: "Are you dure you want to delete #{@task.title}?" } %></p>
+</div>
