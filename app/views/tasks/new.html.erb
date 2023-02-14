@@ -1,16 +1,1 @@
-
-<%# page that show the form  %>
-<div class="container mt-3">
-<h1>New Task</h1>
-  <%= form_with model: @task do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control' %>
-    <%= f.label :details %>
-    <%= f.text_field :details, class: 'form-control' %>
-    <%= f.label :complete %>
-    <%= f.check_box :completed %><br>
-    <%= f.submit class: 'btn btn-primary mt-2' %>
-  <% end %>
-
-  <%= link_to "Task Lists", tasks_path, class: 'btn btn-warning mt-2' %>
-</div>
+<%= render 'tasks/form' %>

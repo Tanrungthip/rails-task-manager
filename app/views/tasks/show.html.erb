@@ -1,11 +1,33 @@
-<div class="container m-3">
+<div class="container mt-3">
   <h1><%= @task.title %></h1>
-  <div class="alert alert-info" role="alert">
-    <p><%= @task.details %></p>
+
+    <%= link_to edit_task_path, class: 'text-primary text-decoration-none' do %>
+      <i class="fa-solid fa-plus"></i> Edit a task
+    <% end %>
+
+  <div>
+    <div class="alert alert-info" role="alert">
+      <p><%= @task.details %></p>
+    </div>
+
+    <% if @task.completed %>
+      <input type="checkbox" name="vehicle1" value="task" checked>
+      <label for="complete">This task is completed</label><br>
+    <% else %>
+      <input type="checkbox" name="vehicle1" value="task">
+      <label for="complete">This task is not complete</label><br>
+    <% end %>
+
+    <p>---------------------------------------------------------------------</p>
+
+    <%= link_to tasks_path, class: 'text-primary text-decoration-none' do %>
+      <i class="fa-solid fa-arrow-left"></i> Back to tasks
+    <% end %>
+    <br>
+    <%= link_to task_path(@task), data: {turbo_method: :delete, turbo_confirm: "Are you dure you want to delete #{@task.title}?" }, class: 'text-primary text-decoration-none' do %>
+      <i class="fa-solid fa-trash-can"></i> Delete
+    <% end %>
+
+    <%# <p><%= link_to 'Delete', task_path(@task), data: {turbo_method: :delete, turbo_confirm: "Are you dure you want to delete #{@task.title}?" } %></p>
   </div>
-
-  <%= link_to "Back to tasks", tasks_path %><br>
-  <%= link_to "Edit this task", edit_task_path %>
-
-  <p><%= link_to 'Delete', task_path(@task), data: {turbo_method: :delete, turbo_confirm: "Are you dure you want to delete #{@task.title}?" } %></p>
 </div>
